@@ -5,7 +5,7 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 
-const FormItem = ({ placeholder }) => (
+export const FormItem = ({ placeholder }) => (
   <div className="relative max-w-xs">
     <input
       type="text"
@@ -36,7 +36,11 @@ export function ModalNuevaBarca({ isOpen, setIsOpen }) {
               <div className="flex gap-4 justify-center">
                 <button
                   className="p-2 bg-blue-500 text-white rounded-md hover:bg-blue-700"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert("Funcionalidad no implementada XDXDXD");
+                    setIsOpen(false);
+                  }}
                 >
                   Agregar
                 </button>

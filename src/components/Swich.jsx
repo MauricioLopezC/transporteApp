@@ -1,8 +1,17 @@
-import { Switch } from '@headlessui/react'
-import { useState } from 'react'
+import { Switch } from "@headlessui/react";
+import { useState, useEffect } from "react";
+import { useStoreTransporte } from "../store/barcazaStore";
 
-export default function SwitchBarcaza() {
-  const [enabled, setEnabled] = useState(false)
+export default function SwitchBarcaza({id}) {
+  const [enabled, setEnabled] = useState(false);
+  const barcazas = useStoreTransporte((state) => state.barcazas) //array de objetos
+  const updateBarcazas = useStoreTransporte((state) => state.updateBarcazas)
+  // console.log("Barcazas del state --> ",barcazas)
+
+  useEffect(() => {
+    barcazas[id].disponible = enabled
+    updateBarcazas(barcazas)
+  },[enabled])
 
   return (
     <Switch
@@ -15,5 +24,5 @@ export default function SwitchBarcaza() {
         className="pointer-events-none inline-block size-5 translate-x-0 rounded-full bg-gray-100 ring-0 shadow-lg transition duration-200 ease-in-out group-data-[checked]:translate-x-7"
       />
     </Switch>
-  )
+  );
 }
