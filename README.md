@@ -1,6 +1,11 @@
 # poner en marcha
+pimero instalar dependecias con:
 
-modo debug
+```shell
+npm install
+```
+
+luego ejecutar el servidor de desarrollo
 ```shell
 npm run dev
 ```
